@@ -32,8 +32,8 @@ public class Main {
         loop1: for (int i = 0; i <= KLimit; i++) {
             for (int j = 0; j <= KLimit; j++) {
                 queue = new ArrayDeque<>(cards);
-                dfs(i);
-                dfs(j);
+                shuffle(i);
+                shuffle(j);
 
                 boolean flag = true;
 
@@ -56,7 +56,7 @@ public class Main {
     }
 
     //ex) 2^4 -> 2^3 -> 2^2 ->2^1 -> 2^0 이거 다함
-    static void dfs(int cnt) {
+    static void shuffle(int cnt) {
         Deque<Integer> t = new ArrayDeque<>();
         int tryCount = 1 << cnt;
         // 배열 옮기기를 위한 값이동

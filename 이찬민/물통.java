@@ -7,7 +7,7 @@ public class Main {
     static int A;
     static int B;
     static int C;
-    static HashSet<Integer> ans;
+    static Set<Integer> ans;
     static Set<List<Integer>> visited;
 
     public static void main(String[] args) throws IOException {
@@ -16,13 +16,13 @@ public class Main {
         A = Integer.parseInt(temp[0]);
         B = Integer.parseInt(temp[1]);
         C = Integer.parseInt(temp[2]);
-        ans = new HashSet<>();
+        ans = new TreeSet<>();
 
         visited = new HashSet<>();
         bfs(0, 0, C);
 
         ArrayList<Integer> answer = new ArrayList<>(ans);
-        Collections.sort(answer);
+
         StringBuilder sb  = new StringBuilder();
         for (int a : answer) {
             sb.append(a).append(" ");
@@ -34,7 +34,6 @@ public class Main {
         Queue<int[]> q = new ArrayDeque<>();
         q.add(new int[]{a,b,c});
 
-        int cnt = 0;
         while(!q.isEmpty()) {
             int[] temp = q.poll();
             // 차있는 물의 양
@@ -59,10 +58,10 @@ public class Main {
 
             if (nA != 0) {
                 // A에서 B로
-                if (nA > diffB) {
+                if (nA > diffB) { // 옮길수 있는 물의 양이 더 많은경우(다 찰때 까지 옮기는 경우)
                     q.add(new int[]{nA - diffB, B, nC});
 
-                } else {
+                } else { // 옮길수 있는 물의 양이 더 적은 경우(다 비울떄 까지 옮기는 경우)
                     q.add(new int[]{0, nB + nA, nC});
 
                 }

@@ -65,10 +65,12 @@ public class Main_2251 {
     }
 
     static void water(int a, int b, int c, int src){
-      //src(0:에서 이동
+      //src에서 이동(0이면:A에서 1:B 2:C)
         int aVal = a, bVal = b, cVal = c;
         if(src == 0){
+            //A 물 양 0 아니면 이동가능
             if(a != 0){
+                // A->B
                 if(a > B - b) {
                     aVal -= B - b;
                     bVal = B;
@@ -76,10 +78,13 @@ public class Main_2251 {
                     bVal += aVal;
                     aVal = 0;
                 }
+                //이동 후 상태에서 파고 들어가기
                 dfs(new Bottle(aVal, bVal, cVal));
 
                 aVal = a;
                 bVal = b;
+                
+                //A->C
                 if(a > C - c) {
                     aVal -= C - c;
                     cVal = C;

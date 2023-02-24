@@ -8,7 +8,6 @@ public class Main {
     static int K;
     static int answer;
     static char[][] map;
-    static boolean[][] visited;
 
     static int[] dx = {-1, 0, 0, 1};
     static int[] dy = {0, 1, -1, 0};
@@ -20,13 +19,12 @@ public class Main {
         C = Integer.parseInt(temp[1]);
         K = Integer.parseInt(temp[2]);
         map = new char[R][C];
-        visited = new boolean[R][C];
 
         for (int i = 0; i < R; i++) {
             map[i] = br.readLine().toCharArray();
         }
 
-        visited[R-1][0] = true;
+        map[R-1][0] = '!';
         dfs(R-1, 0, 1);
 
         System.out.println(answer);
@@ -47,10 +45,10 @@ public class Main {
             int nx = x + dx[i];
             int ny = y + dy[i];
             if (check(nx, ny) && map[nx][ny] == '.') {
-                if (!visited[nx][ny]) {
-                    visited[nx][ny] = true;
+                if (map[nx][ny] != '!') {
+                    map[nx][ny] = '!';
                     dfs(nx, ny, cnt + 1);
-                    visited[nx][ny] = false;
+                    map[nx][ny] = '.';
                 }
             }
         }

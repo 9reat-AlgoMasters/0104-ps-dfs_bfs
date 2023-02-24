@@ -9,16 +9,7 @@ public class Q1189_2 {
     static int visited;
     static int count = 0;
 
-    public static void setInputFile(String path, String fileName) throws FileNotFoundException {
-        String curWorkingDir = System.getProperty("user.dir");
-        System.setIn(new FileInputStream(curWorkingDir + path + fileName));
-    }
-
     public static void main(String[] args) throws IOException {
-        String remainPath = "\\solve\\tc\\";
-        String fileName = "Q1189.txt";
-        setInputFile(remainPath, fileName);
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringBuilder sb = new StringBuilder();

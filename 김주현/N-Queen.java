@@ -24,15 +24,8 @@ public class Q9663 {
     }
     
     private static void dfs(int depth) {
-        /*System.out.printf("[IN] depth : %d\n", depth);
-        System.out.println("현재 queen 상태");
-        for (int i=0; i<depth; i++) {
-            System.out.printf("%d ", queens[i]);
-        }
-        System.out.println();*/
         if (depth == N) {
             count++;
-//            System.out.printf("[OUT - N개 선택됨] depth : %d\n", depth);
             return;
         }
         
@@ -44,7 +37,6 @@ public class Q9663 {
             dfs(depth + 1);
             visited[i] = false;
         }
-//        System.out.printf("[OUT - for end] depth : %d\n", depth);
     }
     
     private static boolean hasOtherQueenInDiagonal(int depth, int pos) {
@@ -55,6 +47,4 @@ public class Q9663 {
         }
         return false;
     }
-    
-    
 }

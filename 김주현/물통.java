@@ -15,16 +15,7 @@ public class Q2251 {
     static Set<Integer> answers = new HashSet<>();
     static int filter = (1<<8)-1;
 
-    public static void setInputFile(String path, String fileName) throws FileNotFoundException {
-        String curWorkingDir = System.getProperty("user.dir");
-        System.setIn(new FileInputStream(curWorkingDir + path + fileName));
-    }
-
     public static void main(String[] args) throws IOException {
-        String path = "\\solve\\tc\\";
-        String fileName = "Q2251.txt";
-        setInputFile(path, fileName);
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringBuilder sb = new StringBuilder();
@@ -60,15 +51,10 @@ public class Q2251 {
 
         while(!q.isEmpty()) {
             curStatus = q.poll();
-//            System.out.println("----------------------");
-//            System.out.print("현재 상황 ---> ");
-//            printWater(curStatus);
 
             for (int[] d : DIR) {
                 nextStatus = moveWater(curStatus, d[FROM] , d[TO]);
                 if (!visitedStatus.contains(nextStatus)) {
-//                        System.out.print("다음 상태 추가 ----> ");
-//                        printWater(nextStatus);
                     q.add(nextStatus);
                     visitedStatus.add(nextStatus);
                     if (getWater(nextStatus, A) == EMPTY) {
@@ -115,5 +101,4 @@ public class Q2251 {
         }
         System.out.println();
     }
-
 }

@@ -12,19 +12,9 @@ public class Q1963 {
     static boolean[] isPrime = new boolean[10000];
     static final int IMPOSSIBLE = -1;
     static int from , to;
-
     static Set<Integer> usedPrimes = new HashSet<>();
 
-    public static void setInputFile(String path, String fileName) throws FileNotFoundException {
-        String curWorkingDir = System.getProperty("user.dir");
-        System.setIn(new FileInputStream(curWorkingDir + path + fileName));
-    }
-
     public static void main(String[] args) throws IOException {
-        String remainPath = "\\solve\\tc\\";
-        String fileName = "Q1963.txt";
-        setInputFile(remainPath, fileName);
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringBuilder sb = new StringBuilder();
@@ -101,8 +91,6 @@ public class Q1963 {
     }
 
     private static int[] findNextPrimes(int prime, int digit) {
-//        System.out.printf("prime : %d, digit : %d\n", prime, digit);
-
         int len = digitsForPrime[digit].length;
         int[] nextPrimes = new int[len];
         System.arraycopy(digitsForPrime[digit], 0, nextPrimes, 0, len);
@@ -112,7 +100,6 @@ public class Q1963 {
             nextPrimes[i] *= (int)Math.pow(10, digit);
             nextPrimes[i] += prime;
         }
-//        System.out.println(Arrays.toString(nextPrimes));
         return nextPrimes;
     }
 
